@@ -26,12 +26,9 @@ while len(guessed_states) < 50:
 
     # if user input types exit(Has to be capitalized because of title())...end while loop
     if user_answer == "Exit":
-        # creating a not guessed list to append to the states that were not guessed and creating new DataFrame to store
-        # those un-guessed states each time someone plays
-        not_guessed = []
-        for state in all_states:
-            if state not in guessed_states:
-                not_guessed.append(state)
+        # creating a not guessed variable using list comprehension to append to the states that were not guessed and
+        # creating new DataFrame to store those un-guessed states each time someone plays
+        not_guessed = [state for state in all_states if state not in guessed_states]
         states_left = pandas.DataFrame(not_guessed)
         states_left.to_csv("states_to_learn.csv")
         break
